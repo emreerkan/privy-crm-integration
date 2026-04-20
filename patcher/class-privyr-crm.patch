@@ -1,0 +1,25 @@
+--- a/includes/class-privyr-crm.php	2026-04-20 11:37:54
++++ b/includes/class-privyr-crm.php	2026-04-20 11:39:13
+@@ -148,6 +148,7 @@
+         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/integrations/class-privyr-formidable.php';
+         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/integrations/class-privyr-everest-form.php';
+         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/integrations/class-privyr-metform.php';
++        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/integrations/class-privyr-bricks-form.php';
+ 
+         $this->loader = new Privyr_Crm_Loader();
+     }
+@@ -275,6 +276,14 @@
+          */
+         $privyr_metform = new Privyr_Metform();
+         $this->loader->add_action('metform_after_store_form_data', $privyr_metform, 'submit_to_privyr', 50, 4);
++
++        /**
++         * Bricks Builder Form Integration
++         * Hooks into the "Custom" form action
++         * Reference: https://academy.bricksbuilder.io/article/form-element/#custom-action
++         */
++        $privyr_bricks_form = new Privyr_Bricks_Form();
++        $this->loader->add_action('bricks/form/custom_action', $privyr_bricks_form, 'submit_bricks_form_to_privyr', 10);
+     }
+ 
+     /**

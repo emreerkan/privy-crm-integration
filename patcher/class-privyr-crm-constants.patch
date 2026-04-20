@@ -1,0 +1,17 @@
+--- a/includes/class-privyr-crm-constants.php	2026-04-20 11:37:54
++++ b/includes/class-privyr-crm-constants.php	2026-04-20 11:38:20
+@@ -136,6 +136,14 @@
+             'iconFile' =>  'metform-logo.png',
+             'webhookUrl' => self::API_BASE_URL . '/integrations/api/v1/metform-webhook'
+         ),
++        array(
++            'key' => 'bricks_form',
++            'name' => 'Bricks Builder',
++            'type' => WP_Integration_Type::THEME,
++            'identifiers' => array('bricks'),
++            'iconFile' =>  'bricks-logo.svg',
++            'webhookUrl' => self::API_BASE_URL . '/integrations/api/v1/elementor-form-webhook'
++        ),
+ 
+     );
+ 
